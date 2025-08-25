@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,15 +8,15 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- React ve ReactDOM -->
+    <!-- React and ReactDOM -->
     <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
 
-    <!-- Babel (JSX için) -->
+    <!-- Babel (for JSX) -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   </head>
   <body class="bg-gray-100 font-sans">
-    <!-- React kökü -->
+    <!-- React root -->
     <div id="root"></div>
 
     <script type="text/babel">
@@ -27,77 +27,84 @@
             <nav className="bg-blue-600 text-white p-4 flex justify-between">
               <h1 className="text-xl font-bold">Berkcan Karabulut</h1>
               <div className="space-x-4">
-                <a href="#about" className="hover:underline">Hakkımda</a>
-                <a href="#projects" className="hover:underline">Projeler</a>
-                <a href="#contact" className="hover:underline">İletişim</a>
+                <a href="#about" className="hover:underline">About</a>
+                <a href="#projects" className="hover:underline">Projects</a>
+                <a href="#contact" className="hover:underline">Contact</a>
               </div>
             </nav>
 
             {/* Hero */}
             <section className="text-center py-16 bg-gradient-to-r from-blue-500 to-purple-600 text-white">
-              <h2 className="text-4xl font-bold mb-4">Merhaba 👋</h2>
-              <p className="text-lg">Ben Berkcan Karabulut, Unity Developer & Oyun Geliştirici</p>
-              <a
-                href="cv.pdf"
-                download
-                className="mt-6 inline-block px-6 py-2 bg-white text-blue-600 font-semibold rounded-lg shadow hover:bg-gray-200"
-              >
-                📄 CV İndir
-              </a>
+              <h2 className="text-4xl font-bold mb-4">Hello 👋</h2>
+              <p className="text-lg">I'm Berkcan Karabulut, Unity Developer & Game Programmer</p>
+              <div className="mt-6 space-x-4">
+                <a
+                  href="cv.pdf"
+                  download
+                  className="inline-block px-6 py-2 bg-white text-blue-600 font-semibold rounded-lg shadow hover:bg-gray-200"
+                >
+                  📄 Download CV
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/berkcan-karabulut-3ba121145"
+                  target="_blank"
+                  className="inline-block px-6 py-2 bg-blue-800 text-white font-semibold rounded-lg shadow hover:bg-blue-900"
+                >
+                  🔗 LinkedIn
+                </a>
+              </div>
             </section>
 
-            {/* Hakkımda */}
+            {/* About */}
             <section id="about" className="max-w-3xl mx-auto p-8">
-              <h3 className="text-2xl font-bold mb-4">Hakkımda</h3>
+              <h3 className="text-2xl font-bold mb-4">About Me</h3>
               <p className="text-gray-700 leading-relaxed">
-                5+ yıldır oyun geliştiriyorum. Unity ile 50’den fazla oyun
-                geliştirdim ve LiveOps deneyimim var. Şu anda mobil ve PC oyunları üzerine
-                çalışıyorum. Kod kalitesi, temiz mimari ve yaratıcı oyun sistemleri
-                geliştirmeye önem veriyorum.
+                I have over 5 years of experience in game development. I developed 50+ games with Unity and also worked on LiveOps projects. 
+                I focus on mobile and PC games, clean code architecture, and creating innovative game systems.
               </p>
             </section>
 
-            {/* Projeler */}
+            {/* Projects */}
             <section id="projects" className="bg-gray-200 py-12">
               <div className="max-w-5xl mx-auto px-6">
-                <h3 className="text-2xl font-bold mb-8 text-center">Projelerim</h3>
+                <h3 className="text-2xl font-bold mb-8 text-center">My Projects</h3>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                   <ProjectCard
                     title="🎰 Wheel of Fortune"
-                    desc="Unity ile geliştirilmiş şans oyunu"
-                    link="https://github.com/berkcankarabulut/WheelOfFortune"
+                    desc="A Unity-based chance game with zone progression."
+                    link="https://github.com/berkcankarabulut/WheelofFortune-VertigoCase"
                   />
                   <ProjectCard
-                    title="🧩 Match 3 Puzzle"
-                    desc="Candy Crush tarzı Match3 oyunu"
-                    link="https://github.com/berkcankarabulut/Match3Game"
+                    title="🍬 Wonder Link Match-3 Game"
+                    desc="A modular, component-based Match-3 game framework built with Unity, using state machines and service-oriented architecture."
+                    link="https://github.com/berkcankarabulut/Wonder-Link-Clone"
                   />
                   <ProjectCard
-                    title="🛒 Market Simulator"
-                    desc="Kıyamet sonrası market işletme oyunu"
-                    link="https://github.com/berkcankarabulut/MarketSim"
+                    title="⚔️ Combat Skill System for Unity"
+                    desc="A flexible combat and skill system featuring damage types, status effects, health management, and combat logging."
+                    link="https://github.com/berkcankarabulut/Combat-Skill-System"
                   />
                 </div>
               </div>
             </section>
 
-            {/* İletişim */}
+            {/* Contact */}
             <section id="contact" className="max-w-3xl mx-auto p-8 text-center">
-              <h3 className="text-2xl font-bold mb-4">İletişim</h3>
+              <h3 className="text-2xl font-bold mb-4">Contact</h3>
               <p className="text-gray-700 mb-4">
-                Benimle iletişime geçmek için:
+                Feel free to reach out to me:
               </p>
               <a
-                href="mailto:berkcankarabulut@gmail.com"
+                href="mailto:berkcank95@gmail.com"
                 className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
               >
-                📧 Mail Gönder
+                📧 Send Email
               </a>
             </section>
 
             {/* Footer */}
             <footer className="bg-blue-600 text-white text-center py-4 mt-12">
-              © {new Date().getFullYear()} Berkcan Karabulut. Tüm Hakları Saklıdır.
+              © {new Date().getFullYear()} Berkcan Karabulut. All Rights Reserved.
             </footer>
           </div>
         );
@@ -113,7 +120,7 @@
               target="_blank"
               className="text-blue-600 font-medium hover:underline"
             >
-              GitHub'da Gör
+              View on GitHub
             </a>
           </div>
         );
