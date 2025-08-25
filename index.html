@@ -1,96 +1,105 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Berkcan Karabulut - Portfolio</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f9f9f9;
-      color: #333;
-    }
-    header {
-      background: #24292f;
-      color: white;
-      padding: 2rem;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-    nav a {
-      color: white;
-      margin: 0 10px;
-      text-decoration: none;
-    }
-    section {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    .projects a {
-      display: block;
-      margin: 0.5rem 0;
-      color: #0366d6;
-      text-decoration: none;
-    }
-    .projects a:hover {
-      text-decoration: underline;
-    }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: #eee;
-      margin-top: 2rem;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Berkcan Karabulut</h1>
-    <p>Senior Unity Developer | Oyun Geliştirici</p>
-    <nav>
-      <a href="#about">Hakkımda</a>
-      <a href="#projects">Projeler</a>
-      <a href="#cv">CV</a>
-      <a href="#contact">İletişim</a>
-    </nav>
-  </header>
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Github, Linkedin, Mail, FileDown } from "lucide-react";
 
-  <section id="about">
-    <h2>👋 Hakkımda</h2>
-    <p>Merhaba, ben Berkcan. 5+ yıllık Unity tecrübem var, 50’den fazla oyun geliştirdim ve 
-       mobil sektörde LiveOps deneyimim oldu. Şu anda oyun geliştirme, shader üretimi ve 
-       sistem tasarımı üzerine çalışıyorum.</p>
-  </section>
+const projects = [
+  {
+    title: "🎰 Wheel of Fortune",
+    desc: "Unity gambling game with wheel progression system",
+    link: "https://github.com/berkcankarabulut/WheelOfFortune",
+  },
+  {
+    title: "🍬 Candy Crush Clone",
+    desc: "Match-3 puzzle game built with Unity",
+    link: "https://github.com/berkcankarabulut/CandyCrushClone",
+  },
+  {
+    title: "📦 Inventory System",
+    desc: "Generic MVP based inventory system in Unity",
+    link: "https://github.com/berkcankarabulut/InventorySystem",
+  },
+];
 
-  <section id="projects" class="projects">
-    <h2>📂 Projelerim</h2>
-    <a href="https://github.com/berkcankarabulut/WheelOfFortune">🎰 Wheel of Fortune - Unity Gambling Game</a>
-    <a href="https://github.com/berkcankarabulut/CandyCrushClone">🍬 Candy Crush Clone</a>
-    <a href="https://github.com/berkcankarabulut/InventorySystem">📦 Unity Inventory System</a>
-    <!-- İstersen buraya diğer projelerini de linklersin -->
-  </section>
+export default function App() {
+  return (
+    <div className="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
+      {/* Navbar */}
+      <header className="bg-gray-900 text-white p-4 flex justify-between items-center">
+        <h1 className="text-xl font-bold">Berkcan Karabulut</h1>
+        <nav className="space-x-4">
+          <a href="#about" className="hover:text-blue-400">Hakkımda</a>
+          <a href="#projects" className="hover:text-blue-400">Projeler</a>
+          <a href="#cv" className="hover:text-blue-400">CV</a>
+          <a href="#contact" className="hover:text-blue-400">İletişim</a>
+        </nav>
+      </header>
 
-  <section id="cv">
-    <h2>📄 CV</h2>
-    <p><a href="cv.pdf" target="_blank">CV’mi buradan indir</a></p>
-    <!-- cv.pdf dosyanı repo'ya ekle, link buradan açılacak -->
-  </section>
+      {/* Hero */}
+      <motion.section
+        className="flex-1 flex flex-col justify-center items-center text-center p-8"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+      >
+        <h2 className="text-4xl font-bold mb-4">Merhaba 👋</h2>
+        <p className="text-lg max-w-2xl">
+          Ben <span className="font-semibold">Berkcan Karabulut</span>, 
+          5+ yıllık deneyime sahip bir <strong>Unity Developer</strong>’ım. 
+          50+ oyun geliştirdim, LiveOps ve mobil oyun sektöründe tecrübelerim var.
+        </p>
+      </motion.section>
 
-  <section id="contact">
-    <h2>📬 İletişim</h2>
-    <p>📧 Mail: <a href="mailto:berkcankarabulut@example.com">berkcankarabulut@example.com</a></p>
-    <p>💼 LinkedIn: <a href="https://www.linkedin.com/in/berkcankarabulut/" target="_blank">linkedin.com/in/berkcankarabulut</a></p>
-    <p>🐙 GitHub: <a href="https://github.com/berkcankarabulut" target="_blank">github.com/berkcankarabulut</a></p>
-  </section>
+      {/* Projects */}
+      <section id="projects" className="max-w-5xl mx-auto p-8">
+        <h2 className="text-3xl font-bold mb-6">📂 Projeler</h2>
+        <div className="grid gap-6 md:grid-cols-3">
+          {projects.map((p, i) => (
+            <motion.a
+              key={i}
+              href={p.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-6 bg-white shadow rounded-2xl hover:shadow-lg transition"
+              whileHover={{ scale: 1.05 }}
+            >
+              <h3 className="text-xl font-semibold mb-2">{p.title}</h3>
+              <p className="text-sm text-gray-600">{p.desc}</p>
+            </motion.a>
+          ))}
+        </div>
+      </section>
 
-  <footer>
-    <p>© 2025 Berkcan Karabulut</p>
-  </footer>
-</body>
-</html>
+      {/* CV */}
+      <section id="cv" className="text-center p-8 bg-gray-100">
+        <h2 className="text-2xl font-bold mb-4">📄 CV</h2>
+        <a
+          href="/cv.pdf"
+          target="_blank"
+          className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700"
+        >
+          <FileDown className="mr-2" /> CV İndir
+        </a>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="text-center p-8">
+        <h2 className="text-2xl font-bold mb-4">📬 İletişim</h2>
+        <div className="flex justify-center space-x-6 text-gray-700">
+          <a href="mailto:berkcankarabulut@example.com" className="hover:text-blue-600">
+            <Mail />
+          </a>
+          <a href="https://github.com/berkcankarabulut" target="_blank" className="hover:text-blue-600">
+            <Github />
+          </a>
+          <a href="https://www.linkedin.com/in/berkcankarabulut/" target="_blank" className="hover:text-blue-600">
+            <Linkedin />
+          </a>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="text-center p-4 bg-gray-200 mt-auto">
+        © 2025 Berkcan Karabulut
+      </footer>
+    </div>
+  );
+}
