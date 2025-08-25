@@ -23,11 +23,11 @@ const projects = [
 ];
 
 const skills = [
-  { name: "Unity", level: 95 },
-  { name: "C#", level: 90 },
-  { name: "Game Development", level: 92 },
-  { name: "Mobile Games", level: 88 },
-  { name: "LiveOps", level: 85 }
+  { name: "Unity" },
+  { name: "C#" },
+  { name: "Game Development" },
+  { name: "Mobile Games" },
+  { name: "LiveOps" }
 ];
 
 export default function App() {
@@ -208,17 +208,17 @@ export default function App() {
                 </p>
                 
                 <div className="d-flex justify-content-center flex-wrap gap-3 mb-5">
-                  <div className="bg-white bg-opacity-20 rounded-pill px-4 py-2 d-flex align-items-center">
-                    <Gamepad2 className="me-2" size={20} />
-                    <span className="fw-semibold">50+ Oyun</span>
+                  <div className="bg-white rounded-pill px-4 py-2 d-flex align-items-center">
+                    <Gamepad2 className="me-2 text-primary" size={20} />
+                    <span className="fw-semibold text-dark">50+ Oyun</span>
                   </div>
-                  <div className="bg-white bg-opacity-20 rounded-pill px-4 py-2 d-flex align-items-center">
-                    <Trophy className="me-2" size={20} />
-                    <span className="fw-semibold">5+ Yıl Deneyim</span>
+                  <div className="bg-white rounded-pill px-4 py-2 d-flex align-items-center">
+                    <Trophy className="me-2 text-warning" size={20} />
+                    <span className="fw-semibold text-dark">5+ Yıl Deneyim</span>
                   </div>
-                  <div className="bg-white bg-opacity-20 rounded-pill px-4 py-2 d-flex align-items-center">
-                    <Star className="me-2" size={20} />
-                    <span className="fw-semibold">Unity Uzmanı</span>
+                  <div className="bg-white rounded-pill px-4 py-2 d-flex align-items-center">
+                    <Star className="me-2 text-success" size={20} />
+                    <span className="fw-semibold text-dark">Unity Uzmanı</span>
                   </div>
                 </div>
                 
@@ -286,20 +286,17 @@ export default function App() {
             </div>
             <div className="row justify-content-center">
               <div className="col-lg-8">
-                {skills.map((skill, i) => (
-                  <div key={i} className="mb-4">
-                    <div className="d-flex justify-content-between align-items-center mb-2">
-                      <span className="fw-semibold fs-5">{skill.name}</span>
-                      <span className="badge bg-primary fs-6">{skill.level}%</span>
+                <div className="row g-3">
+                  {skills.map((skill, i) => (
+                    <div key={i} className="col-lg-6 col-md-6">
+                      <div className="card h-100 border-0 shadow-sm">
+                        <div className="card-body text-center p-4">
+                          <h5 className="fw-bold text-primary mb-0">{skill.name}</h5>
+                        </div>
+                      </div>
                     </div>
-                    <div className="skill-progress">
-                      <div 
-                        className="skill-bar" 
-                        style={{width: `${skill.level}%`}}
-                      ></div>
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -372,7 +369,7 @@ export default function App() {
               <div className="col-lg-6 text-center">
                 <div className="d-flex justify-content-center gap-4">
                   <a 
-                    href="mailto:berkcankarabulut@example.com" 
+                    href="mailto:Berkcank95@gmail.com" 
                     className="social-btn btn btn-outline-primary"
                     title="E-posta Gönder"
                   >
@@ -388,7 +385,7 @@ export default function App() {
                     <Github size={24} />
                   </a>
                   <a 
-                    href="https://www.linkedin.com/in/berkcankarabulut/" 
+                    href="https://www.linkedin.com/in/berkcan-karabulut-3ba121145" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="social-btn btn btn-outline-primary"
