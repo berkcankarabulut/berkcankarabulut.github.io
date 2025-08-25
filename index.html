@@ -33,85 +33,161 @@ const skills = [
 export default function App() {
   const [activeSection, setActiveSection] = useState("home");
 
-  // Bootstrap CSS
-  const bootstrapCSS = `
+  const styles = `
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css');
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
     .hero-gradient {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
     }
+    
     .card-hover {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: all 0.3s ease;
+      border: none;
     }
+    
     .card-hover:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
     }
+    
+    .skill-progress {
+      height: 10px;
+      border-radius: 10px;
+      background: #e9ecef;
+      overflow: hidden;
+    }
+    
     .skill-bar {
-      height: 8px;
+      height: 100%;
       background: linear-gradient(90deg, #667eea, #764ba2);
+      border-radius: 10px;
+      transition: width 1s ease;
     }
+    
     .btn-gradient {
       background: linear-gradient(45deg, #667eea, #764ba2);
       border: none;
+      color: white;
+      transition: all 0.3s ease;
     }
+    
     .btn-gradient:hover {
       background: linear-gradient(45deg, #5a6fd8, #6a4190);
       transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+      color: white;
     }
-    .section-divider {
+    
+    .section-title {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
       height: 3px;
       background: linear-gradient(90deg, #667eea, #764ba2);
+      border-radius: 2px;
     }
+    
     .tech-badge {
       background: linear-gradient(45deg, #667eea, #764ba2);
       color: white;
+      font-size: 0.8rem;
     }
+    
     .stats-card {
-      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
     }
-    .social-icon {
+    
+    .social-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transition: all 0.3s ease;
+      text-decoration: none;
     }
-    .social-icon:hover {
-      transform: scale(1.2);
+    
+    .social-btn:hover {
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    
+    .navbar-custom {
+      background: rgba(33, 37, 41, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    }
+    
+    .project-card {
+      height: 100%;
+      transition: all 0.3s ease;
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+    
+    .animate-counter {
+      font-weight: bold;
+      color: #667eea;
     }
   `;
 
   return (
     <>
-      <style>{bootstrapCSS}</style>
-      <div className="min-h-screen">
-        {/* Bootstrap CDN */}
-        <link 
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" 
-          rel="stylesheet" 
-        />
-
+      <style dangerouslySetInnerHTML={{ __html: styles }} />
+      
+      <div>
         {/* Navigation */}
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+        <nav className="navbar navbar-expand-lg navbar-dark fixed-top navbar-custom">
           <div className="container">
-            <a className="navbar-brand fw-bold" href="#home">
+            <a className="navbar-brand fw-bold d-flex align-items-center" href="#home">
               <Code className="me-2" size={24} />
               Berkcan Karabulut
             </a>
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button 
+              className="navbar-toggler" 
+              type="button" 
+              data-bs-toggle="collapse" 
+              data-bs-target="#navbarNav"
+            >
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
-                  <a className="nav-link" href="#home">Ana Sayfa</a>
+                  <a className="nav-link px-3" href="#home">Ana Sayfa</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#about">Hakkımda</a>
+                  <a className="nav-link px-3" href="#about">Hakkımda</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#projects">Projeler</a>
+                  <a className="nav-link px-3" href="#projects">Projeler</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#skills">Yetenekler</a>
+                  <a className="nav-link px-3" href="#skills">Yetenekler</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#contact">İletişim</a>
+                  <a className="nav-link px-3" href="#contact">İletişim</a>
                 </li>
               </ul>
             </div>
@@ -119,36 +195,36 @@ export default function App() {
         </nav>
 
         {/* Hero Section */}
-        <section id="home" className="hero-gradient text-white" style={{marginTop: '76px', minHeight: '100vh'}}>
-          <div className="container h-100 d-flex align-items-center">
-            <div className="row w-100">
-              <div className="col-lg-8 mx-auto text-center">
-                <div className="animate__animated animate__fadeInUp">
-                  <h1 className="display-3 fw-bold mb-4">
-                    Merhaba! 👋 Ben <span className="text-warning">Berkcan</span>
-                  </h1>
-                  <p className="lead mb-4 fs-4">
-                    5+ yıllık deneyime sahip <strong>Unity Developer</strong>'ım. 
-                    50+ oyun geliştirdim ve mobil oyun sektöründe uzmanım.
-                  </p>
-                  <div className="d-flex justify-content-center gap-3 mb-5">
-                    <div className="badge bg-light text-dark p-3 fs-6">
-                      <Gamepad2 className="me-2" size={20} />
-                      50+ Oyun
-                    </div>
-                    <div className="badge bg-light text-dark p-3 fs-6">
-                      <Trophy className="me-2" size={20} />
-                      5+ Yıl Deneyim
-                    </div>
-                    <div className="badge bg-light text-dark p-3 fs-6">
-                      <Star className="me-2" size={20} />
-                      Unity Uzmanı
-                    </div>
+        <section id="home" className="hero-gradient d-flex align-items-center" style={{paddingTop: '80px'}}>
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-8 mx-auto text-center text-white">
+                <h1 className="display-3 fw-bold mb-4">
+                  Merhaba! 👋 Ben <span style={{color: '#ffd700'}}>Berkcan</span>
+                </h1>
+                <p className="lead mb-5 fs-4">
+                  5+ yıllık deneyime sahip <strong>Unity Developer</strong>'ım. 
+                  50+ oyun geliştirdim ve mobil oyun sektöründe uzmanım.
+                </p>
+                
+                <div className="d-flex justify-content-center flex-wrap gap-3 mb-5">
+                  <div className="bg-white bg-opacity-20 rounded-pill px-4 py-2 d-flex align-items-center">
+                    <Gamepad2 className="me-2" size={20} />
+                    <span className="fw-semibold">50+ Oyun</span>
                   </div>
-                  <a href="#projects" className="btn btn-light btn-lg px-5 py-3 fw-semibold">
-                    Projelerimi Gör
-                  </a>
+                  <div className="bg-white bg-opacity-20 rounded-pill px-4 py-2 d-flex align-items-center">
+                    <Trophy className="me-2" size={20} />
+                    <span className="fw-semibold">5+ Yıl Deneyim</span>
+                  </div>
+                  <div className="bg-white bg-opacity-20 rounded-pill px-4 py-2 d-flex align-items-center">
+                    <Star className="me-2" size={20} />
+                    <span className="fw-semibold">Unity Uzmanı</span>
+                  </div>
                 </div>
+                
+                <a href="#projects" className="btn btn-light btn-lg px-5 py-3 fw-semibold rounded-pill">
+                  Projelerimi Gör
+                </a>
               </div>
             </div>
           </div>
@@ -160,25 +236,24 @@ export default function App() {
             <div className="row">
               <div className="col-lg-10 mx-auto">
                 <div className="text-center mb-5">
-                  <h2 className="display-5 fw-bold text-dark mb-3">Hakkımda</h2>
-                  <div className="section-divider w-25 mx-auto mb-4"></div>
+                  <h2 className="display-5 fw-bold text-dark section-title">Hakkımda</h2>
                 </div>
-                <div className="row align-items-center">
+                <div className="row align-items-center g-4">
                   <div className="col-lg-6">
-                    <div className="card border-0 shadow-lg stats-card text-white">
-                      <div className="card-body p-5">
-                        <h4 className="card-title fw-bold mb-4">İstatistikler</h4>
-                        <div className="row text-center">
+                    <div className="card stats-card h-100">
+                      <div className="card-body p-5 text-center">
+                        <h4 className="fw-bold mb-4">İstatistikler</h4>
+                        <div className="row">
                           <div className="col-4">
-                            <h3 className="fw-bold">50+</h3>
+                            <h2 className="display-4 fw-bold">50+</h2>
                             <p className="mb-0">Proje</p>
                           </div>
                           <div className="col-4">
-                            <h3 className="fw-bold">5+</h3>
+                            <h2 className="display-4 fw-bold">5+</h2>
                             <p className="mb-0">Yıl</p>
                           </div>
                           <div className="col-4">
-                            <h3 className="fw-bold">100%</h3>
+                            <h2 className="display-4 fw-bold">100%</h2>
                             <p className="mb-0">Tutku</p>
                           </div>
                         </div>
@@ -186,12 +261,12 @@ export default function App() {
                     </div>
                   </div>
                   <div className="col-lg-6">
-                    <h4 className="fw-bold text-primary mb-3">Unity Developer</h4>
-                    <p className="lead">
+                    <h3 className="fw-bold mb-3" style={{color: '#667eea'}}>Unity Developer</h3>
+                    <p className="lead mb-3">
                       Oyun geliştirme tutkum ile 5 yılı aşkın süredir Unity ile çalışıyorum. 
                       Mobil oyun sektöründe kazandığım deneyimlerle 50'den fazla proje geliştirdim.
                     </p>
-                    <p>
+                    <p className="text-muted">
                       LiveOps sistemleri, monetizasyon stratejileri ve kullanıcı deneyimi 
                       konularında derinlemesine bilgi sahibiyim. Her projede kaliteli kod 
                       yazımı ve sürdürülebilir mimari tasarımı önceliklerim arasında.
@@ -207,20 +282,19 @@ export default function App() {
         <section id="skills" className="py-5">
           <div className="container">
             <div className="text-center mb-5">
-              <h2 className="display-5 fw-bold text-dark mb-3">Yetenekler</h2>
-              <div className="section-divider w-25 mx-auto mb-4"></div>
+              <h2 className="display-5 fw-bold text-dark section-title">Yetenekler</h2>
             </div>
-            <div className="row">
-              <div className="col-lg-8 mx-auto">
+            <div className="row justify-content-center">
+              <div className="col-lg-8">
                 {skills.map((skill, i) => (
                   <div key={i} className="mb-4">
                     <div className="d-flex justify-content-between align-items-center mb-2">
-                      <span className="fw-semibold">{skill.name}</span>
-                      <span className="badge bg-primary">{skill.level}%</span>
+                      <span className="fw-semibold fs-5">{skill.name}</span>
+                      <span className="badge bg-primary fs-6">{skill.level}%</span>
                     </div>
-                    <div className="progress" style={{height: '8px'}}>
+                    <div className="skill-progress">
                       <div 
-                        className="progress-bar skill-bar" 
+                        className="skill-bar" 
                         style={{width: `${skill.level}%`}}
                       ></div>
                     </div>
@@ -235,22 +309,21 @@ export default function App() {
         <section id="projects" className="py-5 bg-light">
           <div className="container">
             <div className="text-center mb-5">
-              <h2 className="display-5 fw-bold text-dark mb-3">Projeler</h2>
-              <div className="section-divider w-25 mx-auto mb-4"></div>
-              <p className="lead">Son projelerimden örnekler</p>
+              <h2 className="display-5 fw-bold text-dark section-title">Projeler</h2>
+              <p className="lead mt-3">Son projelerimden örnekler</p>
             </div>
-            <div className="row">
+            <div className="row g-4">
               {projects.map((project, i) => (
-                <div key={i} className="col-lg-4 col-md-6 mb-4">
-                  <div className="card h-100 border-0 shadow card-hover">
-                    <div className="card-body d-flex flex-column">
-                      <h5 className="card-title fw-bold text-primary mb-3">
+                <div key={i} className="col-lg-4 col-md-6">
+                  <div className="card project-card shadow-sm">
+                    <div className="card-body p-4 d-flex flex-column">
+                      <h5 className="card-title fw-bold mb-3" style={{color: '#667eea'}}>
                         {project.title}
                       </h5>
-                      <p className="card-text flex-grow-1">{project.desc}</p>
+                      <p className="card-text flex-grow-1 text-muted">{project.desc}</p>
                       <div className="mb-3">
                         {project.tech.map((tech, j) => (
-                          <span key={j} className="badge tech-badge me-2 mb-1">
+                          <span key={j} className="badge tech-badge me-2 mb-2">
                             {tech}
                           </span>
                         ))}
@@ -259,7 +332,7 @@ export default function App() {
                         href={project.link} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="btn btn-gradient text-white fw-semibold mt-auto"
+                        className="btn btn-gradient fw-semibold mt-auto d-flex align-items-center justify-content-center"
                       >
                         <Github className="me-2" size={16} />
                         GitHub'da Gör
@@ -273,14 +346,14 @@ export default function App() {
         </section>
 
         {/* CV Section */}
-        <section className="py-5 hero-gradient text-white">
-          <div className="container text-center">
+        <section className="py-5 hero-gradient text-white text-center">
+          <div className="container">
             <h2 className="display-6 fw-bold mb-4">CV İndir</h2>
             <p className="lead mb-4">Detaylı özgeçmişime göz atmak ister misiniz?</p>
             <a
               href="/cv.pdf"
               target="_blank"
-              className="btn btn-light btn-lg px-5 py-3 fw-semibold"
+              className="btn btn-light btn-lg px-5 py-3 fw-semibold rounded-pill d-inline-flex align-items-center"
             >
               <FileDown className="me-2" size={20} />
               CV İndir
@@ -292,16 +365,15 @@ export default function App() {
         <section id="contact" className="py-5">
           <div className="container">
             <div className="text-center mb-5">
-              <h2 className="display-5 fw-bold text-dark mb-3">İletişim</h2>
-              <div className="section-divider w-25 mx-auto mb-4"></div>
-              <p className="lead">Projeleriniz için benimle iletişime geçin</p>
+              <h2 className="display-5 fw-bold text-dark section-title">İletişim</h2>
+              <p className="lead mt-3">Projeleriniz için benimle iletişime geçin</p>
             </div>
             <div className="row justify-content-center">
               <div className="col-lg-6 text-center">
                 <div className="d-flex justify-content-center gap-4">
                   <a 
                     href="mailto:berkcankarabulut@example.com" 
-                    className="btn btn-outline-primary btn-lg social-icon"
+                    className="social-btn btn btn-outline-primary"
                     title="E-posta Gönder"
                   >
                     <Mail size={24} />
@@ -310,7 +382,7 @@ export default function App() {
                     href="https://github.com/berkcankarabulut" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="btn btn-outline-dark btn-lg social-icon"
+                    className="social-btn btn btn-outline-dark"
                     title="GitHub Profili"
                   >
                     <Github size={24} />
@@ -319,7 +391,7 @@ export default function App() {
                     href="https://www.linkedin.com/in/berkcankarabulut/" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="btn btn-outline-primary btn-lg social-icon"
+                    className="social-btn btn btn-outline-primary"
                     title="LinkedIn Profili"
                   >
                     <Linkedin size={24} />
@@ -333,8 +405,8 @@ export default function App() {
         {/* Footer */}
         <footer className="bg-dark text-white py-4">
           <div className="container text-center">
-            <p className="mb-0">© 2025 Berkcan Karabulut - Unity Developer</p>
-            <p className="small text-muted mt-2">Made with ❤️ using React & Bootstrap</p>
+            <p className="mb-1">© 2025 Berkcan Karabulut - Unity Developer</p>
+            <p className="small text-muted">Made with ❤️ using React & Bootstrap</p>
           </div>
         </footer>
       </div>
