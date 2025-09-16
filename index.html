@@ -496,17 +496,13 @@
                 <img src="https://github.com/berkcankarabulut.png" alt="Berkcan Karabulut" class="profile-image" id="profile-image">
                 <h1>Berkcan Karabulut</h1>
                 <div class="subtitle">Unity Game Developer & Software Engineer</div>
-                <p>Multiplayer FPS Games | Mobile Game Development | Modular Game Architecture</p>
+                <p>Multiplayer Games | Game Development | Modular Architecture</p>
                 
                 <div class="github-stats">
                     <div class="stat-card">
                         <span class="stat-number" id="github-repos">-</span>
                         <span class="stat-label">Public Repos</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number" id="github-stars">-</span>
-                        <span class="stat-label">Total Stars</span>
-                    </div>
+                    </div> 
                     <div class="stat-card">
                         <span class="stat-number" id="github-followers">-</span>
                         <span class="stat-label">Followers</span>
@@ -646,8 +642,8 @@
             
             <div class="project-grid">
                 <div class="project-card">
-                    <h3>🧩 Wonder Link Clone - Match-3 Framework</h3>
-                    <p>A modular, component-based Match-3 game framework built with Unity, utilizing state machines and service-oriented architecture. Developed following modern software design principles for scalability and maintainability.</p>
+                    <h3>🧩 Wonder Link Clone - Match-3</h3>
+                    <p>A modular, component-based Match-3 built with Unity, utilizing state machines and service-oriented architecture. Developed following modern software design principles for scalability and maintainability.</p>
                     
                     <div class="architecture-diagram">
                         <strong>Architecture Components:</strong><br>
@@ -843,47 +839,33 @@
 </body>
 
 <script>
-// GitHub API'den istatistikleri çeken fonksiyon
 async function fetchGitHubStats() {
     try {
         const username = 'berkcankarabulut';
         
-        // Kullanıcı bilgilerini çek
         const userResponse = await fetch(`https://api.github.com/users/${username}`);
         const userData = await userResponse.json();
         
-        // Repository bilgilerini çek
         const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
-        const reposData = await reposResponse.json();
+        const reposData = await reposResponse.json(); 
         
-        // Toplam star sayısını hesapla
-        const totalStars = reposData.reduce((sum, repo) => sum + repo.stargazers_count, 0);
-        
-        // DOM'u güncelle
-        document.getElementById('github-repos').textContent = userData.public_repos;
-        document.getElementById('github-stars').textContent = totalStars;
+        document.getElementById('github-repos').textContent = userData.public_repos; 
         document.getElementById('github-followers').textContent = userData.followers;
         
-        // Profil resmini güncelle
         if (userData.avatar_url) {
             document.getElementById('profile-image').src = userData.avatar_url;
         }
         
-        // Animasyon efekti ekle
         animateNumbers();
         
     } catch (error) {
         console.log('GitHub API error:', error);
-        // Hata durumunda varsayılan değerler
-        document.getElementById('github-repos').textContent = '10+';
-        document.getElementById('github-stars').textContent = '5+';
+        document.getElementById('github-repos').textContent = '10+'; 
         document.getElementById('github-followers').textContent = '20+';
-        // Profil resmi için fallback
         document.getElementById('profile-image').src = 'https://github.com/berkcankarabulut.png';
     }
 }
 
-// Sayıları animasyonlu şekilde artıran fonksiyon
 function animateNumbers() {
     const counters = document.querySelectorAll('.stat-number');
     counters.forEach(counter => {
@@ -907,8 +889,7 @@ function animateNumbers() {
         requestAnimationFrame(updateCounter);
     });
 }
-
-// Sayfa yüklendiğinde GitHub istatistiklerini çek
+    
 document.addEventListener('DOMContentLoaded', function() {
     fetchGitHubStats();
 });
