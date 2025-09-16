@@ -1,132 +1,643 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Berkcan Karabulut - Portfolio</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berkcan Karabulut - Game Developer Portfolio</title>
+    <meta name="description" content="Unity Game Developer specializing in multiplayer FPS games, mobile game development, and modular game architecture. Check out my published games and open source projects.">
+    <meta name="keywords" content="Unity Developer, Game Developer, C#, Mobile Games, FPS, Multiplayer, Photon, PlayFab">
+    <meta name="author" content="Berkcan Karabulut">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Berkcan Karabulut - Game Developer Portfolio">
+    <meta property="og:description" content="Unity Game Developer specializing in multiplayer FPS games and mobile game development">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://berkcankarabulut.github.io">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
 
-    <!-- React and ReactDOM -->
-    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-    <!-- Babel (for JSX) -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  </head>
-  <body class="bg-gray-100 font-sans">
-    <!-- React root -->
-    <div id="root"></div>
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem 0;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
 
-    <script type="text/babel">
-      function App() {
-        return (
-          <div>
-            {/* Navbar */}
-            <nav className="bg-blue-600 text-white p-4 flex justify-between">
-              <h1 className="text-xl font-bold">Berkcan Karabulut</h1>
-              <div className="space-x-4">
-                <a href="#about" className="hover:underline">About</a>
-                <a href="#projects" className="hover:underline">Projects</a>
-                <a href="#contact" className="hover:underline">Contact</a>
-              </div>
-            </nav>
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            animation: shimmer 3s ease-in-out infinite;
+        }
 
-            {/* Hero */}
-            <section className="text-center py-16 bg-gradient-to-r from-blue-500 to-purple-600 text-white">
-              <h2 className="text-4xl font-bold mb-4">Hello 👋</h2>
-              <p className="text-lg">I'm Berkcan Karabulut, Unity Developer & Game Programmer</p>
-              <div className="mt-6 space-x-4">
-                <a
-                  href="cv.pdf"
-                  download
-                  className="inline-block px-6 py-2 bg-white text-blue-600 font-semibold rounded-lg shadow hover:bg-gray-200"
-                >
-                  📄 Download CV
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/berkcan-karabulut-3ba121145"
-                  target="_blank"
-                  className="inline-block px-6 py-2 bg-blue-800 text-white font-semibold rounded-lg shadow hover:bg-blue-900"
-                >
-                  🔗 LinkedIn
-                </a>
-              </div>
-            </section>
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
 
-            {/* About */}
-            <section id="about" className="max-w-3xl mx-auto p-8">
-              <h3 className="text-2xl font-bold mb-4">About Me</h3>
-              <p className="text-gray-700 leading-relaxed">
-                I have over 5 years of experience in game development. I developed 50+ games with Unity and also worked on LiveOps projects. 
-                I focus on mobile and PC games, clean code architecture, and creating innovative game systems.
-              </p>
-            </section>
+        .header-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
 
-            {/* Projects */}
-            <section id="projects" className="bg-gray-200 py-12">
-              <div className="max-w-5xl mx-auto px-6">
-                <h3 className="text-2xl font-bold mb-8 text-center">My Projects</h3>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  <ProjectCard
-                    title="🎰 Wheel of Fortune"
-                    desc="A Unity-based chance game with zone progression."
-                    link="https://github.com/berkcankarabulut/WheelofFortune-VertigoCase"
-                  />
-                  <ProjectCard
-                    title="🍬 Wonder Link Match-3 Game"
-                    desc="A modular, component-based Match-3 game framework built with Unity, using state machines and service-oriented architecture."
-                    link="https://github.com/berkcankarabulut/Wonder-Link-Clone"
-                  />
-                  <ProjectCard
-                    title="⚔️ Combat Skill System for Unity"
-                    desc="A flexible combat and skill system featuring damage types, status effects, health management, and combat logging."
-                    link="https://github.com/berkcankarabulut/Combat-Skill-System"
-                  />
+        .header-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .header-content .subtitle {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            margin-bottom: 2rem;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: left 0.5s ease;
+        }
+
+        .section:hover::before {
+            left: 0;
+        }
+
+        .section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #f8f9ff, #e8f2ff);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100px;
+            width: 100px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: right 0.6s ease;
+        }
+
+        .project-card:hover::after {
+            right: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateX(10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .project-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tech-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: transform 0.2s ease;
+        }
+
+        .tech-tag:hover {
+            transform: scale(1.1);
+        }
+
+        .app-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .app-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .app-link:hover::before {
+            left: 100%;
+        }
+
+        .app-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
+        }
+
+        .github-link {
+            background: linear-gradient(135deg, #24292e, #444d56);
+        }
+
+        .github-link:hover {
+            box-shadow: 0 10px 20px rgba(36, 41, 46, 0.3);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #fff, #f8f9ff);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h4 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-info {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            top: 40%;
+            left: 70%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 1.5rem;
+            }
+            
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .app-links {
+                justify-content: center;
+            }
+        }
+
+        .project-highlight {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+            color: white;
+        }
+
+        .project-highlight h3 {
+            color: white;
+        }
+
+        .architecture-diagram {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            border-left: 4px solid #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Berkcan Karabulut</h1>
+                <div class="subtitle">Unity Game Developer & Software Engineer</div>
+                <p>Multiplayer FPS Games | Mobile Game Development | Modular Game Architecture</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="section">
+            <h2>🎯 Featured Projects</h2>
+            
+            <div class="project-grid">
+                <div class="project-card project-highlight">
+                    <h3>🎮 PlayfabAndPhoton-FPS</h3>
+                    <p>A networked first-person shooter game built with Unity, leveraging Playfab and Photon PUN technologies. This comprehensive project features player movement, weapon switching, aiming, shooting mechanics, health system, leaderboards, and room-based multiplayer functionality.</p>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">Unity</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">Photon PUN</span>
+                        <span class="tech-tag">PlayFab</span>
+                        <span class="tech-tag">Multiplayer</span>
+                        <span class="tech-tag">FPS</span>
+                    </div>
+                    
+                    <p><strong>Key Features:</strong></p>
+                    <ul style="margin: 1rem 0; padding-left: 2rem;">
+                        <li>Real-time multiplayer gameplay</li>
+                        <li>Player movement mechanics and physics system</li>
+                        <li>Weapon system and combat mechanics</li>
+                        <li>Health and damage system</li>
+                        <li>Online leaderboards</li>
+                        <li>Room-based matchmaking system</li>
+                    </ul>
+                    
+                    <div class="app-links">
+                        <a href="https://github.com/berkcankarabulut/PlayfabAndPhoton-FPS" class="app-link github-link">
+                            📂 View on GitHub
+                        </a>
+                    </div>
                 </div>
-              </div>
-            </section>
 
-            {/* Contact */}
-            <section id="contact" className="max-w-3xl mx-auto p-8 text-center">
-              <h3 className="text-2xl font-bold mb-4">Contact</h3>
-              <p className="text-gray-700 mb-4">
-                Feel free to reach out to me:
-              </p>
-              <a
-                href="mailto:berkcank95@gmail.com"
-                className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
-              >
-                📧 Send Email
-              </a>
-            </section>
+                <div class="project-card">
+                    <h3>🧩 Wonder Link Clone - Match-3 Framework</h3>
+                    <p>A modular, component-based Match-3 game framework built with Unity, utilizing state machines and service-oriented architecture. Developed following modern software design principles for scalability and maintainability.</p>
+                    
+                    <div class="architecture-diagram">
+                        <strong>Architecture Components:</strong><br>
+                        ├── State Management (Game State Machine)<br>
+                        ├── Service Layer (Board, Score, Move, UI Services)<br>
+                        ├── Board System (Grid, Element, Match Detection)<br>
+                        ├── Element Management (Animation, State, Pooling)<br>
+                        ├── UI System (State-based UI Management)<br>
+                        └── Data Management (Scriptable Objects)
+                    </div>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">Unity</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">State Machine</span>
+                        <span class="tech-tag">Object Pooling</span>
+                        <span class="tech-tag">Service Architecture</span>
+                        <span class="tech-tag">Design Patterns</span>
+                    </div>
+                    
+                    <p><strong>Design Patterns Implemented:</strong></p>
+                    <ul style="margin: 1rem 0; padding-left: 2rem;">
+                        <li>State Pattern - Game flow management</li>
+                        <li>Observer Pattern - Event handling</li>
+                        <li>Adapter Pattern - System communication</li>
+                        <li>Factory Pattern - Element creation</li>
+                        <li>Object Pool Pattern - Resource management</li>
+                        <li>Strategy Pattern - Match detection algorithms</li>
+                    </ul>
+                    
+                    <div class="app-links">
+                        <a href="https://github.com/berkcankarabulut/Wonder-Link-Clone" class="app-link github-link">
+                            📂 View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            {/* Footer */}
-            <footer className="bg-blue-600 text-white text-center py-4 mt-12">
-              © {new Date().getFullYear()} Berkcan Karabulut. All Rights Reserved.
-            </footer>
-          </div>
-        );
-      }
+        <section class="section">
+            <h2>📱 Published Mobile Games</h2>
+            
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>🎯 Wild Gunfighter West Sniper</h3>
+                    <p>A challenging Western-themed sniper game offering an immersive experience as a Wild West hero. Action-packed gameplay with authentic Western atmosphere.</p>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">Unity</span>
+                        <span class="tech-tag">Mobile</span>
+                        <span class="tech-tag">Action</span>
+                        <span class="tech-tag">Shooter</span>
+                    </div>
+                    
+                    <div class="app-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.mg.wild.gunfighter.west.sniper&hl=en_ZA" class="app-link">
+                            📱 Download on Google Play
+                        </a>
+                    </div>
+                </div>
 
-      function ProjectCard({ title, desc, link }) {
-        return (
-          <div className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
-            <h4 className="text-xl font-semibold mb-2">{title}</h4>
-            <p className="text-gray-600 mb-4">{desc}</p>
-            <a
-              href={link}
-              target="_blank"
-              className="text-blue-600 font-medium hover:underline"
-            >
-              View on GitHub
-            </a>
-          </div>
-        );
-      }
+                <div class="project-card">
+                    <h3>🔫 Hitman Agent Shooting</h3>
+                    <p>FPS-style action game featuring realistic graphics and gameplay. An immersive agent experience with challenging sniper missions.</p>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">Unity</span>
+                        <span class="tech-tag">Mobile</span>
+                        <span class="tech-tag">FPS</span>
+                        <span class="tech-tag">Action</span>
+                    </div>
+                    
+                    <p><strong>Features:</strong></p>
+                    <ul style="margin: 1rem 0; padding-left: 2rem;">
+                        <li>Realistic graphics and gameplay</li>
+                        <li>Unique adventures in each map</li>
+                        <li>Wide range of weapon options</li>
+                        <li>Diverse enemy types and missions</li>
+                    </ul>
+                    
+                    <div class="app-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.hitman.agent.shooting&hl=en_US" class="app-link">
+                            📱 Download on Google Play
+                        </a>
+                    </div>
+                </div>
 
-      ReactDOM.createRoot(document.getElementById("root")).render(<App />);
-    </script>
-  </body>
+                <div class="project-card">
+                    <h3>🔤 Word Blast Puzzle</h3>
+                    <p>Word finding and puzzle game designed for vocabulary development and brain exercise. Relaxing gameplay experience for all ages.</p>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">Unity</span>
+                        <span class="tech-tag">Mobile</span>
+                        <span class="tech-tag">Puzzle</span>
+                        <span class="tech-tag">Word Game</span>
+                    </div>
+                    
+                    <div class="app-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.Boshphelm.WordBlastPuzzle&hl=en_US" class="app-link">
+                            📱 Download on Google Play
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>🎯 Word Blast Match</h3>
+                    <p>Word matching game requiring quick thinking and vocabulary knowledge. Fun puzzle game with engaging mechanics.</p>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">Unity</span>
+                        <span class="tech-tag">Mobile</span>
+                        <span class="tech-tag">Match Game</span>
+                        <span class="tech-tag">Word Game</span>
+                    </div>
+                    
+                    <div class="app-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.Boshphelm.WordBlastMatch&hl=en_US" class="app-link">
+                            📱 Download on Google Play
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>💻 Technical Skills</h2>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>🎮 Game Development</h4>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Unity 3D</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">Game Design</span>
+                        <span class="tech-tag">2D/3D Graphics</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4>🌐 Multiplayer & Networking</h4>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Photon PUN</span>
+                        <span class="tech-tag">PlayFab</span>
+                        <span class="tech-tag">Real-time Multiplayer</span>
+                        <span class="tech-tag">Matchmaking</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4>📱 Platform Development</h4>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Mobile Development</span>
+                        <span class="tech-tag">Android</span>
+                        <span class="tech-tag">iOS</span>
+                        <span class="tech-tag">Cross-platform</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4>🏗️ Software Architecture</h4>
+                    <div class="tech-stack">
+                        <span class="tech-tag">State Machines</span>
+                        <span class="tech-tag">Design Patterns</span>
+                        <span class="tech-tag">Modular Architecture</span>
+                        <span class="tech-tag">Service-Oriented Design</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4>⚡ Performance & Optimization</h4>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Object Pooling</span>
+                        <span class="tech-tag">Memory Management</span>
+                        <span class="tech-tag">Performance Optimization</span>
+                        <span class="tech-tag">Resource Management</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4>🔧 Development Tools</h4>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Git/GitHub</span>
+                        <span class="tech-tag">Version Control</span>
+                        <span class="tech-tag">Project Management</span>
+                        <span class="tech-tag">Agile Development</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="contact-info">
+                <h3>🚀 What You'll See in My Projects</h3>
+                <p>✅ Modern software architecture with proper design pattern implementation</p>
+                <p>✅ Performance-focused and optimized code structure</p>
+                <p>✅ Multiplayer game development expertise</p>
+                <p>✅ Mobile platform optimization and publishing experience</p>
+                <p>✅ Modular and scalable code architecture</p>
+                <br>
+                <div class="app-links" style="justify-content: center;">
+                    <a href="https://github.com/berkcankarabulut" class="app-link github-link">
+                        👤 My GitHub Profile
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
 </html>
