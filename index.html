@@ -496,9 +496,16 @@
                 <img src="https://github.com/berkcankarabulut.png" alt="Berkcan Karabulut" class="profile-image" id="profile-image">
                 <h1>Berkcan Karabulut</h1>
                 <div class="subtitle">Unity Game Developer & Software Engineer</div>
-                <p>Multiplayer Games | Game Development | Modular Architecture</p>
-                
+                <p>Multiplayer Games | Game Development | Modular Architecture</p>                
                 <div class="github-stats">
+                    <div class="stat-card">
+                        <span class="stat-number" id="games-developed">50+</span>
+                        <span class="stat-label">Games Developed</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="dev-experience">-</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
                     <div class="stat-card">
                         <span class="stat-number" id="github-repos">-</span>
                         <span class="stat-label">Public Repos</span>
@@ -884,6 +891,13 @@ async function fetchGitHubStats() {
         const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
         const reposData = await reposResponse.json(); 
         
+        // Calculate dev experience (2019'dan beri)
+        const startYear = 2019;
+        const currentYear = new Date().getFullYear();
+        const yearsExperience = currentYear - startYear;
+        
+        document.getElementById('games-developed').textContent = '50+';
+        document.getElementById('dev-experience').textContent = yearsExperience + '+';
         document.getElementById('github-repos').textContent = userData.public_repos; 
         document.getElementById('github-followers').textContent = userData.followers;
         
@@ -895,6 +909,12 @@ async function fetchGitHubStats() {
         
     } catch (error) {
         console.log('GitHub API error:', error);
+        const startYear = 2019;
+        const currentYear = new Date().getFullYear();
+        const yearsExperience = currentYear - startYear;
+        
+        document.getElementById('games-developed').textContent = '50+';
+        document.getElementById('dev-experience').textContent = yearsExperience + '+';
         document.getElementById('github-repos').textContent = '10+'; 
         document.getElementById('github-followers').textContent = '20+';
         document.getElementById('profile-image').src = 'https://github.com/berkcankarabulut.png';
